@@ -75,6 +75,10 @@
     margin-right: 20px;
 }
 
+.section-review .btn-thumb {
+    background-color: #2F80ED;
+}
+
 .section-review .btn-circle img {
     width: 29px;
 }
