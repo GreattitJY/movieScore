@@ -79,6 +79,10 @@
     background-color: #2F80ED;
 }
 
+.section-review .btn-heart {
+    background-color: #EB5757;
+}
+
 .section-review .btn-circle img {
     width: 29px;
 }
