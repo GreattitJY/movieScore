@@ -1,7 +1,7 @@
 const btnThumb = document.querySelector("#btn-thumb");
 const btnHeart = document.querySelector("#btn-heart");
 const btnStar = document.querySelectorAll(".btn-star img");
-const test = document.querySelector(".btn-star");
+const btnReset = document.querySelector(".btn-reset");
 
 const imgThumb = btnThumb.querySelector("img");
 const imgHeart = btnHeart.querySelector("img");
@@ -26,10 +26,16 @@ btnHeart.addEventListener("click", () => {
     }
 });
 
+let isClick = false;
+
 [...btnStar].forEach((star) => {
     star.addEventListener("mousemove", (event) => {
         let pos = event.offsetX;
         let posId = event.target.id;
+
+        if (isClick) {
+            return;
+        }
 
         if (posId === "1") {
             if (pos < 2) {
@@ -97,4 +103,19 @@ btnHeart.addEventListener("click", () => {
             }
         }
     });
+});
+
+[...btnStar].forEach((star) => {
+    star.addEventListener("click", (event) => {
+        if (!isClick) {
+            isClick = true;
+        }
+    });
+});
+
+btnReset.addEventListener("click", (event) => {
+    [...btnStar].forEach((star) => {
+        star.setAttribute("src", "./src/img/icon_star_3.png");
+    });
+    isClick = false;
 });
