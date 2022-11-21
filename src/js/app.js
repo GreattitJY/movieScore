@@ -25,21 +25,76 @@ btnHeart.addEventListener("click", () => {
         imgHeart.setAttribute("src", "./src/img/icon_heart_white_line.png");
     }
 });
+
 [...btnStar].forEach((star) => {
     star.addEventListener("mousemove", (event) => {
         let pos = event.offsetX;
-        console.log(pos);
-        if (event.target.id === "1" && pos < 25) {
-            btnStar[0].setAttribute("src", "./src/img/icon_star_2.png");
-        } else if (event.target.id === "1" && pos >= 25) {
-            btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+        let posId = event.target.id;
+
+        if (posId === "1") {
+            if (pos < 2) {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_3.png");
+            } else if (pos <= 25) {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_2.png");
+            } else {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+            }
+            btnStar[1].setAttribute("src", "./src/img/icon_star_3.png");
+            btnStar[2].setAttribute("src", "./src/img/icon_star_3.png");
+            btnStar[3].setAttribute("src", "./src/img/icon_star_3.png");
+            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
+        } else if (posId === "2") {
+            if (pos <= 25) {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_2.png");
+            } else {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+            }
+            btnStar[2].setAttribute("src", "./src/img/icon_star_3.png");
+            btnStar[3].setAttribute("src", "./src/img/icon_star_3.png");
+            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
+        } else if (posId === "3") {
+            if (pos <= 25) {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[2].setAttribute("src", "./src/img/icon_star_2.png");
+            } else {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
+            }
+            btnStar[3].setAttribute("src", "./src/img/icon_star_3.png");
+            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
+        } else if (posId === "4") {
+            if (pos <= 25) {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[3].setAttribute("src", "./src/img/icon_star_2.png");
+            } else {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[3].setAttribute("src", "./src/img/icon_star_1.png");
+            }
+            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
+        } else if (posId === "5") {
+            if (pos <= 25) {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[3].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[4].setAttribute("src", "./src/img/icon_star_2.png");
+            } else {
+                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[3].setAttribute("src", "./src/img/icon_star_1.png");
+                btnStar[4].setAttribute("src", "./src/img/icon_star_1.png");
+            }
         }
     });
 });
-
-// test.addEventListener("mousemove", (event) => {
-//     let pos = event.offsetX;
-//     console.log(pos);
-//     // console.log("test");
-// });
-// console.log(test);
