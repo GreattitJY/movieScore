@@ -17,6 +17,10 @@
     overflow: hidden;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* 레이아웃 */
 
 #app {
