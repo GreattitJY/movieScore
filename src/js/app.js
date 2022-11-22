@@ -29,7 +29,7 @@ btnHeart.addEventListener("click", () => {
 
 let isClick = false;
 
-const setbtnStarImg = (posId, pos) => {
+const setBtnStarImg = (posId, pos) => {
     const halfStar = posId - 1;
 
     for (let i = 0; i < posId; i++) {
@@ -39,6 +39,10 @@ const setbtnStarImg = (posId, pos) => {
         } else {
             btnStarImg[i].setAttribute("src", "./src/img/icon_star_1.png");
         }
+    }
+
+    if (posId === "1" && pos < 2) {
+        btnStarImg[0].setAttribute("src", "./src/img/icon_star_3.png");
     }
 
     for (let i = posId; i < 5; i++) {
@@ -55,11 +59,7 @@ const setbtnStarImg = (posId, pos) => {
             return;
         }
 
-        setbtnStarImg(posId, pos);
-
-        if (posId === "1" && pos < 2) {
-            btnStarImg[0].setAttribute("src", "./src/img/icon_star_3.png");
-        }
+        setBtnStarImg(posId, pos);
 
         star.addEventListener("click", (event) => {
             if (!isClick) {
