@@ -6,6 +6,29 @@
 
 ## 업데이트 및 고민사항
 
+-   11월 22일
+
+    -   별점 이벤트 구현 시 반복되던 if문을 함수로 리팩토링했습니다.
+
+        ```js
+        const setbtnStarImg = (posId, pos) => {
+            const halfStar = posId - 1;
+
+            for (let i = 0; i < posId; i++) {
+                if (pos <= 25) {
+                    btnStarImg[i].setAttribute("src", "./src/img/icon_star_1.png");
+                    btnStarImg[halfStar].setAttribute("src", "./src/img/icon_star_2.png");
+                } else {
+                    btnStarImg[i].setAttribute("src", "./src/img/icon_star_1.png");
+                }
+            }
+
+            for (let i = posId; i < 5; i++) {
+                btnStarImg[i].setAttribute("src", "./src/img/icon_star_3.png");
+            }
+        };
+        ```
+
 -   11월 21일
 
     -   css가 아닌 js로 별점 호버 이벤트 구현 시 마우스 위치 offset과 dataset으로 구분
