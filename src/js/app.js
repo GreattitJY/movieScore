@@ -1,6 +1,7 @@
 const btnThumb = document.querySelector("#btn-thumb");
 const btnHeart = document.querySelector("#btn-heart");
-const btnStar = document.querySelectorAll(".btn-star img");
+const btnStar = document.querySelector(".btn-star");
+const btnStarImg = document.querySelectorAll(".btn-star img");
 const btnReset = document.querySelector(".btn-reset");
 
 const imgThumb = btnThumb.querySelector("img");
@@ -28,7 +29,24 @@ btnHeart.addEventListener("click", () => {
 
 let isClick = false;
 
-[...btnStar].forEach((star) => {
+const setbtnStarImg = (posId, pos) => {
+    const halfStar = posId - 1;
+
+    for (let i = 0; i < posId; i++) {
+        if (pos <= 25) {
+            btnStarImg[i].setAttribute("src", "./src/img/icon_star_1.png");
+            btnStarImg[halfStar].setAttribute("src", "./src/img/icon_star_2.png");
+        } else {
+            btnStarImg[i].setAttribute("src", "./src/img/icon_star_1.png");
+        }
+    }
+
+    for (let i = posId; i < 5; i++) {
+        btnStarImg[i].setAttribute("src", "./src/img/icon_star_3.png");
+    }
+};
+
+[...btnStarImg].forEach((star) => {
     star.addEventListener("mousemove", (event) => {
         let pos = event.offsetX;
         let posId = event.target.id;
@@ -37,85 +55,25 @@ let isClick = false;
             return;
         }
 
-        if (posId === "1") {
-            if (pos < 2) {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_3.png");
-            } else if (pos <= 25) {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_2.png");
-            } else {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-            }
-            btnStar[1].setAttribute("src", "./src/img/icon_star_3.png");
-            btnStar[2].setAttribute("src", "./src/img/icon_star_3.png");
-            btnStar[3].setAttribute("src", "./src/img/icon_star_3.png");
-            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
-        } else if (posId === "2") {
-            if (pos <= 25) {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_2.png");
-            } else {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-            }
-            btnStar[2].setAttribute("src", "./src/img/icon_star_3.png");
-            btnStar[3].setAttribute("src", "./src/img/icon_star_3.png");
-            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
-        } else if (posId === "3") {
-            if (pos <= 25) {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[2].setAttribute("src", "./src/img/icon_star_2.png");
-            } else {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
-            }
-            btnStar[3].setAttribute("src", "./src/img/icon_star_3.png");
-            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
-        } else if (posId === "4") {
-            if (pos <= 25) {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[3].setAttribute("src", "./src/img/icon_star_2.png");
-            } else {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[3].setAttribute("src", "./src/img/icon_star_1.png");
-            }
-            btnStar[4].setAttribute("src", "./src/img/icon_star_3.png");
-        } else if (posId === "5") {
-            if (pos <= 25) {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[3].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[4].setAttribute("src", "./src/img/icon_star_2.png");
-            } else {
-                btnStar[0].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[1].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[2].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[3].setAttribute("src", "./src/img/icon_star_1.png");
-                btnStar[4].setAttribute("src", "./src/img/icon_star_1.png");
-            }
-        }
-    });
-});
+        setbtnStarImg(posId, pos);
 
-[...btnStar].forEach((star) => {
-    star.addEventListener("click", (event) => {
-        if (!isClick) {
-            isClick = true;
+        if (posId === "1" && pos < 2) {
+            btnStarImg[0].setAttribute("src", "./src/img/icon_star_3.png");
         }
+
+        star.addEventListener("click", (event) => {
+            if (!isClick) {
+                isClick = true;
+                btnStar.style.cursor = "default";
+            }
+        });
     });
 });
 
 btnReset.addEventListener("click", (event) => {
-    [...btnStar].forEach((star) => {
+    [...btnStarImg].forEach((star) => {
         star.setAttribute("src", "./src/img/icon_star_3.png");
     });
     isClick = false;
+    btnStar.style.cursor = "pointer";
 });
