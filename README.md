@@ -11,7 +11,7 @@
     -   별점 이벤트 구현 시 반복되던 if문을 함수로 리팩토링했습니다.
 
         ```js
-        const setbtnStarImg = (posId, pos) => {
+        const setBtnStarImg = (posId, pos) => {
             const halfStar = posId - 1;
 
             for (let i = 0; i < posId; i++) {
